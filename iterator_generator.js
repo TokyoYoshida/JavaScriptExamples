@@ -1,9 +1,27 @@
 // Iterator / Generator example
 
+// Iterator
+{
+makeIterator1 = () => {
+  let index = 0
+  const myIterator = {
+    next: () => {
+      if (index <= 10) {
+        const result = { value: index, done: false }
+        index += 1
+        return result
+      }
+      return { value: index, done: true }
+    }
+  }
+  return myIterator
+}
 
-// Iterator example
 
-let it = {}
+
+// Iterable Object
+
+let it2 = {}
 
 // Iterable object needs [Symbol.iterator]() method returns iterator.
 it[Symbol.iterator] = () => {
@@ -21,19 +39,19 @@ it[Symbol.iterator] = () => {
   return myIterator
 }
 
-for (const x of it) {
+for (const x of it2) {
   console.log('★DEBUG ',x)
 }
 
 // Generator function
 
-function* makeIterator() {
+function* makeIterator2() {
   yield 1
   yield 2
 }
 
-const it2 = makeIterator()
+const it3 = makeIterator2()
 
-for (const x of it2) {
+for (const x of it3) {
   console.log('★DEBUG ', x)
 }

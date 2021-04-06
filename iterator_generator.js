@@ -68,3 +68,40 @@
     console.log('★DEBUG ', x)
   }
 })();
+
+(() => {
+  // Iterable Object by Generator function
+  console.log('## Iterable Object by Generator function')
+  let it = {
+    *[Symbol.iterator]() {
+      yield 1
+      yield 2
+      yield 3
+    }
+  }
+
+  for (const x of it) {
+    console.log('★DEBUG ', x)
+  }  
+})();
+
+(() => {
+  // Permanent　Generator function
+  console.log('## Permanent　Generator function')
+
+  function* makeIterator() {
+    let i = 0
+    while(true) {
+      i++
+      yield i
+    }
+  }
+
+  const it = makeIterator()
+
+  it.next()
+  it.next()
+  it.next()
+  let x = it.next()
+  console.log('★DEBUG ', x)
+})();
